@@ -2,7 +2,9 @@ const contactUs = require("../models/contactUsModel");
 //Get all messages
 exports.getMessages = async (req, res) => {
   try {
-    const messages = await contactUs.find();
+    const messages = await contactUs
+      .find({ IsSeen: false })
+      .sort({ createdAt: -1 });
     res.status(200).json({
       status: "success",
       data: {
@@ -44,5 +46,19 @@ exports.deleteMessage = async (req, res) => {
     res.status(400).send("Error deleting message");
   }
 };
-
-//sort by date
+exports.markSeen = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updatedMessage = await contactUs.findByIdAndUpdate(
+      id,
+      { IsSeen: true },
+      { new: true }
+    );
+    if (!updatedMessage) {
+      return res.status(404).send("Message not found");
+    }
+    res.json(updatedMessage);
+  } catch (err) {
+    res.status(500).send("Error marking message as seen");
+  }
+};

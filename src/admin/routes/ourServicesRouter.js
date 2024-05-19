@@ -7,10 +7,6 @@ router.get("/", servicesController.getAllServices);
 
 router.get("/:id", servicesController.getOneService);
 
-router.patch(
-  "/:id",
-  uploadMulter.single("icon"),
-  servicesController.updateService
-);
+router.patch("/:id", servicesController.updateService);
 
 module.exports = router;

@@ -1,71 +1,74 @@
 const mongoose = require("mongoose");
+
 const aboutSchema = new mongoose.Schema({
-  Arabic: {
+  title: {
+    type: {
+      ar: String, // Arabic title
+      en: String, // English title
+    },
+    trim: true,
+  },
+  companyBio: {
     title: {
-      type: String,
-      term: true,
+      ar: String,
+      en: String,
     },
-    companyBio: {
-      title: {
-        type: String,
-        trim: true,
-      },
-      paragraph: {
-        type: String,
-        trim: true,
-      },
+    paragraph: {
+      ar: String,
+      en: String,
     },
-    whatWeDo: {
-      title: {
-        type: String,
-        trim: true,
-      },
-      paragraph: {
-        type: String,
-        trim: true,
-      },
+  },
+  whatWeDo: {
+    title: {
+      ar: String,
+      en: String,
     },
-    ourVision: {
-      title: {
-        type: String,
-        trim: true,
-      },
-      paragraph: {
-        type: String,
-        trim: true,
-      },
+    paragraph: {
+      ar: String,
+      en: String,
     },
-    ourMission: {
-      title: {
-        type: String,
-        trim: true,
-      },
-      paragraph: {
-        type: String,
-        trim: true,
-      },
+  },
+  ourVision: {
+    title: {
+      ar: String,
+      en: String,
     },
-    ourGoals: {
-      title: {
-        type: String,
-        trim: true,
-      },
-      paragraph: {
-        type: String,
-        trim: true,
-      },
+    paragraph: {
+      ar: String,
+      en: String,
     },
-    ourPromise: {
-      title: {
-        type: String,
-        trim: true,
-      },
-      paragraph: {
-        type: String,
-        trim: true,
-      },
+  },
+  ourMission: {
+    title: {
+      ar: String,
+      en: String,
+    },
+    paragraph: {
+      ar: String,
+      en: String,
+    },
+  },
+  ourGoals: {
+    title: {
+      ar: String,
+      en: String,
+    },
+    paragraph: {
+      ar: String,
+      en: String,
+    },
+  },
+  ourPromise: {
+    title: {
+      ar: String,
+      en: String,
+    },
+    paragraph: {
+      ar: String,
+      en: String,
     },
   },
 });
+
 const aboutUs = mongoose.model("aboutUs", aboutSchema);
 module.exports = aboutUs;
