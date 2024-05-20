@@ -34,17 +34,8 @@ exports.getOneService = async (req, res) => {
 exports.updateService = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, paragraph } = req.body;
-    let icon;
-    // console.log(req.file);
-    if (req.file) {
-      icon = req.file.path;
-    } else {
-      const existingService = await Services.findById(id);
-      if (existingService) {
-        icon = existingService.icon;
-      }
-    }
+    const { icon, title, paragraph } = req.body;
+
     const updatedService = await Services.findByIdAndUpdate(
       id,
       { icon, title, paragraph },

@@ -1,40 +1,95 @@
 const mongoose = require("mongoose");
 const homeSchema = new mongoose.Schema({
   title: {
-    type: String,
+    type: {
+      ar: String, // Arabic title
+      en: String, // English title
+    },
+    trim: true,
   },
-  subTitle: [String],
-
-  statisticTitle: String,
+  subTitle: {
+    ar: [String],
+    en: [String],
+  },
+  statisticTitle: {
+    type: {
+      ar: String,
+      en: String,
+    },
+  },
   statistic: [
     {
-      title: String,
+      title: {
+        type: {
+          ar: String,
+          en: String,
+        },
+      },
       number: String,
     },
   ],
-  quote: String,
+  quote: {
+    type: {
+      ar: String, // Arabic title
+      en: String, // English title
+    },
+  },
 
-  testimonialTitle: String,
-  testimonialSubTitle: String,
+  testimonialTitle: {
+    type: {
+      ar: String,
+      en: String,
+    },
+  },
+  testimonialSubTitle: {
+    type: {
+      ar: String,
+      en: String,
+    },
+  },
   testimonials: [
     {
-      name: String,
-      job: String,
-      description: String,
+      name: {
+        type: {
+          ar: String,
+          en: String,
+        },
+      },
+      job: {
+        type: {
+          ar: String,
+          en: String,
+        },
+      },
+      description: {
+        type: {
+          ar: String,
+          en: String,
+        },
+      },
       img: String,
     },
   ],
   certificatesTitle: {
-    type: String,
+    type: {
+      ar: String,
+      en: String,
+    },
   },
   certificates: [
     {
-      title: String,
+      title: {
+        type: {
+          ar: String,
+          en: String,
+        },
+      },
       img: String,
       year: Number,
       issuedBy: String,
     },
   ],
 });
+
 const home = mongoose.model("home", homeSchema);
 module.exports = home;
